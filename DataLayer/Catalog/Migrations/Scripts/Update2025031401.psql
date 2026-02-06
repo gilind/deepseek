@@ -1,0 +1,5 @@
+﻿UPDATE couplingtypes
+	SET size1name = 'Диаметр'
+	WHERE UPPER(name) = 'ХОМУТ';
+
+INSERT INTO "public"."migsharp" ("timestamp", module, tag) VALUES (2025031401, 'Default', NULL);

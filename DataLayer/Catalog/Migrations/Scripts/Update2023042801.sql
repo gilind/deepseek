@@ -1,0 +1,2 @@
+﻿ALTER TABLE Wires ADD MaxEFP float NOT NULL DEFAULT(0.0)
+GO

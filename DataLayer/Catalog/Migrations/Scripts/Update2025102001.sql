@@ -1,0 +1,6 @@
+﻿ALTER TABLE Armatures ADD ReserveRateIsZero bit NOT NULL DEFAULT(0)
+GO
+
+ALTER TABLE Pylons ADD Flexible bit NOT NULL DEFAULT(0)
+GO
+

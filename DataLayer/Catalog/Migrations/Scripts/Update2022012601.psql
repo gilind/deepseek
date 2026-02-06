@@ -1,0 +1,9 @@
+ALTER TABLE wires ADD montagetablemintemperature int NOT NULL DEFAULT(0);
+
+ALTER TABLE wires ADD montagetablemaxtemperature int NOT NULL DEFAULT(0);
+
+ALTER TABLE wires ADD operatingmaxtemperature int NOT NULL DEFAULT(0);
+
+ALTER TABLE wires ADD emergencymodetemperature int NOT NULL DEFAULT(0);
+
+INSERT INTO "public"."migsharp" ("timestamp", module, tag) VALUES (2022012601, 'Default', NULL);

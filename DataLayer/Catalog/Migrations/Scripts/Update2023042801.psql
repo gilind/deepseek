@@ -1,0 +1,3 @@
+﻿ALTER TABLE wires ADD maxefp DOUBLE PRECISION NOT NULL DEFAULT(0);
+
+INSERT INTO "public"."migsharp" ("timestamp", module, tag) VALUES (2023042801, 'Default', NULL);

@@ -1,0 +1,22 @@
+﻿ALTER TABLE CableBracings ADD ChainsIsolatorCount int NOT NULL DEFAULT(0);
+GO
+
+UPDATE CableBracings SET ChainsIsolatorCount = 1
+WHERE CableBracings.id IN (SELECT cb.id
+	FROM CableBracings AS cb, CableBracingArmatures AS cba, Armatures AS a, ArmatureTypes AS ats
+	WHERE cb.ID = cba.CableBracingID
+		AND cba.ArmatureID = a.ID
+		AND a.ArmatureTypeID = ats.ID
+        AND (ats.EquipmentType = 1 OR ats.EquipmentType = 2 OR ats.EquipmentType = 3));
+GO
+
+UPDATE CableBracings SET ChainsIsolatorCount = 2
+WHERE CableBracings.id IN (SELECT cb.id
+	FROM CableBracings AS cb, CableBracingArmatures AS cba, Armatures AS a, ArmatureTypes AS ats
+	WHERE cb.ChainsIsolatorCount = 1
+		AND cb.ID = cba.CableBracingID
+		AND cba.ArmatureID = a.ID
+		AND a.ArmatureTypeID = ats.ID
+        AND UPPER(ats.Name) = N'КОРОМЫСЛО');
+GO
+

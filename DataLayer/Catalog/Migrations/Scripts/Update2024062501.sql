@@ -1,0 +1,5 @@
+﻿ALTER TABLE CableBracings ADD NameProject NVARCHAR(500) NULL;
+GO
+
+ALTER TABLE CableBracings ADD Note NVARCHAR(1000) NULL;
+GO

@@ -1,0 +1,5 @@
+﻿ALTER TABLE armatures ADD reserverateiszero boolean NOT NULL DEFAULT FALSE;
+
+ALTER TABLE Pylons ADD flexible boolean NOT NULL DEFAULT FALSE;
+
+INSERT INTO "public"."migsharp" ("timestamp", module, tag) VALUES (2025102001, 'Default', NULL);

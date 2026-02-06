@@ -1,0 +1,3 @@
+﻿ALTER TABLE cablebracings ADD distancetoisolator DOUBLE PRECISION NOT NULL DEFAULT(0);
+
+INSERT INTO "public"."migsharp" ("timestamp", module, tag) VALUES (2024010101, 'Default', NULL);

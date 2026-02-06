@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1F626858-49F4-4D90-927C-4294D707CFAE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ru.DataLayer</RootNamespace>
+    <AssemblyName>Ru.DataLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Database\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Database\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MigSharp, Version=2.3.3.0, Culture=neutral, PublicKeyToken=6cbf6233e7d0373d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MigSharp.2.3.3\lib\net40\MigSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NHibernate, Version=5.4.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.5.4.9\lib\net48\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate, Version=3.0.0.0, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentNHibernate.3.0.0\lib\net461\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=2.0.1.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.2.0.1.2\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql, Version=4.1.3.1, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.4.1.3.1\lib\net461\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.99.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.99.0\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SqlClient, Version=4.6.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SqlClient.4.9.0\lib\net462\System.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\SqlCeProvider3.5.1.0.0\lib\net20\System.Data.SqlServerCe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Catalog\Migrations\Scripts\ClearDatabaseData.sql" />
+    <Compile Include="Catalog\Migrations\PostgreMigration.cs" />
+    <Compile Include="Catalog\SqliteTools.cs" />
+    <Compile Include="Catalog\TableNames.cs" />
+    <Compile Include="ConnectionErrorHandling.cs" />
+    <Compile Include="ProjectDataLayer.Blolb.cs" />
+    <Compile Include="ProjectDataLayer.Stateless.cs" />
+    <Compile Include="SecurityEventListener.cs" />
+    <Compile Include="DatabaseHelpers\NpgsqlCustomCommandBuilder.cs" />
+    <Compile Include="DatabaseHelpers\NpgsqlBatchDataAdapter.cs" />
+    <Compile Include="DatabaseHelpers\DataTransferHelper.cs" />
+    <Compile Include="DatabaseHelpers\MigSharpHelper.cs" />
+    <Compile Include="Catalog\DataLayer.Static.cs" />
+    <Compile Include="Catalog\Migrations\DbCommandHelper.cs" />
+    <Compile Include="Catalog\ProviderNames.cs" />
+    <Compile Include="Catalog\DataLayer.cs" />
+    <Compile Include="Catalog\DbProviderHelper.cs" />
+    <Compile Include="Catalog\Migrations\MigrationScripts.cs" />
+    <Compile Include="Catalog\Migrations\MigSharpExtensions.cs" />
+    <Compile Include="Catalog\MigrationTasks.cs" />
+    <Compile Include="DataServices.cs" />
+    <Compile Include="MetaDataLayer.cs" />
+    <Compile Include="ProjectDataLayer.cs" />
+    <Compile Include="ProjectDataLayer.Lock.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Catalog\ResRepository.cs" />
+    <Compile Include="Catalog\SqlCeConnectionStringHelper.cs" />
+    <Compile Include="Catalog\SqlCeHelper.cs" />
+    <Compile Include="Catalog\SqlServerHelper.cs" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2025102801.psql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2025102001.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2025080801.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2025040901.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2025031401.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2025022701.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2024113001.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2024062501.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2024010101.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2023180701ce.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2023180701.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2023042801.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2023032901.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2022021401.psql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2022012601.psql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2022021401.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2022012601.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2020090701.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2019111901.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2014103001.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2014101001.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2014041801.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2013103001.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2013082101.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\ConvertCabelBracings.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2013043001ce.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2013043001.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\CouplingData.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2014052601.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\CreateViewGrunts.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\postgre-view.psql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\postgre-tables-after.psql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\postgre-data.psql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\postgre-tables-before.psql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\CreateViewFoundations.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\CreateViewPylonsForMushrooms.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\RecreateViewWires.sql" />
+    <Content Include="Catalog\Migrations\Scripts\MergeCableBracings.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2013020101ce.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2013020201.sql" />
+    <Content Include="Catalog\Migrations\Scripts\MergeArmatures.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2013020101.sql" />
+    <Content Include="Catalog\Migrations\Scripts\DropDatabase.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DBCore\DBCore.csproj">
+      <Project>{1dfe086a-785d-4d92-84ec-a8b40f1e424a}</Project>
+      <Name>DBCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MathHelper\MathHelper.csproj">
+      <Project>{e1f1e391-a403-4e35-a3b3-13a3623240e7}</Project>
+      <Name>MathHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PluginCommon\PluginCommon.csproj">
+      <Project>{cce8f5e9-6cf7-4a2e-82cb-c34e493c90a4}</Project>
+      <Name>PluginCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rubius.Common.ErrorHandling\Rubius.Common.ErrorHandling.csproj">
+      <Project>{34de3b89-ce16-4ea8-a5d7-4bde13731859}</Project>
+      <Name>Rubius.Common.ErrorHandling</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rubius.Common\Rubius.Common.csproj">
+      <Project>{14290035-7c0b-4fb3-8a78-5e2945c055dd}</Project>
+      <Name>Rubius.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Security\Security.csproj">
+      <Project>{3E452840-B774-484C-8BB6-9C1FFBAB8C58}</Project>
+      <Name>Security</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update_LEPtoRES.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\FillValuesConfiguration.sql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\CreateDbStructure.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\CreateViewPylons.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\CreateViewWires.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2012111301.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2023032901.psql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2023042801.psql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2023180701.psql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2024010101.psql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2024062501.psql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2024113001.psql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2025022701.psql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2025031401.psql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2025040901.psql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2025080801.psql" />
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2025102001.psql" />
+    <None Include="packages.config" />
+    <None Include="sqlceca35.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="sqlcecompact35.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="sqlceer35EN.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="sqlceer35RU.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="sqlceme35.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="sqlceoledb35.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="sqlceqp35.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="sqlcese35.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="System.Data.SqlServerCe.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2012112901.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Catalog\Migrations\Scripts\Update2012121202.sql" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.99.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.99.0\build\net46\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.99.0\build\net46\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.99.0\build\net46\System.Data.SQLite.Core.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,4 @@
+ALTER TABLE cablebracingarmatures ADD isdrawable boolean NOT NULL DEFAULT true;
+
+INSERT INTO "public"."migsharp" ("timestamp", module, tag) VALUES (2022021401, 'Default', NULL);
+

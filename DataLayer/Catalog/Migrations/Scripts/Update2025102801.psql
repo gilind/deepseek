@@ -1,0 +1,12 @@
+﻿CREATE TABLE "public"."armaturewires"( 
+	"id" uuid NOT NULL,
+	"armatureid" uuid NOT NULL,
+	"wireid" uuid,
+	"wirecode" varchar,
+	"wirediameter" double precision,
+	"wirebreakingforce" double precision,
+	"wiregripstrength" double precision,
+	"clampultimateload" double precision,
+	"version" int NOT NULL);
+
+INSERT INTO "public"."migsharp" ("timestamp", module, tag) VALUES (2025102801, 'Default', NULL);

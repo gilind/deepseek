@@ -1,0 +1,5 @@
+﻿ALTER TABLE cablebracings ADD nameproject TEXT NULL;
+
+ALTER TABLE cablebracings ADD note TEXT NULL;
+
+INSERT INTO "public"."migsharp" ("timestamp", module, tag) VALUES (2024062501, 'Default', NULL);

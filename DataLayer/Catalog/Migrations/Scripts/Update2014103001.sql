@@ -1,0 +1,117 @@
+﻿ALTER TABLE Wires ADD discriminator nvarchar(255) NOT NULL DEFAULT('Ru.DBCore.Domain.Wire') 
+GO
+
+ALTER TABLE Wires ALTER COLUMN Type int NULL 
+GO
+ALTER TABLE Wires ALTER COLUMN Name nvarchar(255) NULL 
+GO
+ALTER TABLE Wires ALTER COLUMN Code nvarchar(255) NULL 
+GO
+ALTER TABLE Wires ALTER COLUMN Weight float NULL 
+GO
+ALTER TABLE Wires ALTER COLUMN Diameter float NULL 
+GO
+ALTER TABLE Wires ALTER COLUMN TensionMaximumLoad float NULL 
+GO
+ALTER TABLE Wires ALTER COLUMN CrossSectionArea float NULL 
+GO
+ALTER TABLE Wires ALTER COLUMN CrossSectionAreaAl float NULL 
+GO
+ALTER TABLE Wires ALTER COLUMN TensionMidOperatingLoad float NULL 
+GO
+ALTER TABLE Wires ALTER COLUMN TemperatureCompensation float NULL 
+GO
+ALTER TABLE Wires ALTER COLUMN Alfa float NULL
+GO
+ALTER TABLE Wires ALTER COLUMN ModD float NULL 
+GO
+ALTER TABLE Wires ALTER COLUMN ModE float NULL
+GO
+ALTER TABLE Wires ALTER COLUMN ModF float NULL 
+GO
+ALTER TABLE Wires ALTER COLUMN Import bit NULL
+GO
+ALTER TABLE Wires ALTER COLUMN ProductCode nvarchar(255) NULL
+GO
+ALTER TABLE Wires ALTER COLUMN A1 float NULL 
+GO
+ALTER TABLE Wires ALTER COLUMN A2 float NULL 
+GO
+ALTER TABLE Wires ALTER COLUMN A3 float NULL 
+GO
+ALTER TABLE Wires ALTER COLUMN ConstructionLength float NULL 
+GO
+ALTER TABLE Wires ALTER COLUMN CrossSectionAreaSteel float NULL 
+GO
+ALTER TABLE Wires ALTER COLUMN Exp1 float NULL
+GO
+ALTER TABLE Wires ALTER COLUMN Max1 float NULL 
+GO
+ALTER TABLE Wires ALTER COLUMN ClampCode nvarchar(255) NULL
+GO
+ALTER TABLE Wires ALTER COLUMN Resistance float NULL
+GO
+ALTER TABLE Wires ALTER COLUMN Reactance float NULL 
+GO
+ALTER TABLE Wires ALTER COLUMN ResistancePhase0 float NULL 
+GO
+
+ALTER TABLE Wires ADD ConductorType int NULL 
+GO
+ALTER TABLE Wires ADD TotalRTS float NULL 
+GO
+ALTER TABLE Wires ADD TotalNominalWeight float NULL 
+GO
+ALTER TABLE Wires ADD FinalMOECore float NULL 
+GO
+ALTER TABLE Wires ADD FinalMOEAluminum float NULL 
+GO
+ALTER TABLE Wires ADD ThermalExpansionAL float NULL 
+GO
+ALTER TABLE Wires ADD ThermalExpansionCore float NULL 
+GO
+ALTER TABLE Wires ADD RefTemp float NULL 
+GO
+ALTER TABLE Wires ADD MaxOpTemp float NULL 
+GO
+ALTER TABLE Wires ADD WireFileRefTemp float NULL 
+GO
+ALTER TABLE Wires ADD A0 float NULL 
+GO
+ALTER TABLE Wires ADD A4 float NULL 
+GO
+ALTER TABLE Wires ADD B0 float NULL 
+GO
+ALTER TABLE Wires ADD B1 float NULL 
+GO
+ALTER TABLE Wires ADD B2 float NULL 
+GO
+ALTER TABLE Wires ADD B3 float NULL
+GO
+ALTER TABLE Wires ADD B4 float NULL 
+GO
+ALTER TABLE Wires ADD C0 float NULL 
+GO
+ALTER TABLE Wires ADD C1 float NULL 
+GO
+ALTER TABLE Wires ADD C2 float NULL 
+GO
+ALTER TABLE Wires ADD C3 float NULL 
+GO
+ALTER TABLE Wires ADD C4 float NULL 
+GO
+ALTER TABLE Wires ADD D0 float NULL 
+GO
+ALTER TABLE Wires ADD D1 float NULL 
+GO
+ALTER TABLE Wires ADD D2 float NULL 
+GO
+ALTER TABLE Wires ADD D3 float NULL 
+GO
+ALTER TABLE Wires ADD D4 float NULL 
+GO
+ALTER TABLE Wires ADD AlPart float NULL 
+GO
+ALTER TABLE Wires ADD CorePart float NULL 
+GO
+

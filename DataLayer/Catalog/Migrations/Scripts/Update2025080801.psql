@@ -1,0 +1,4 @@
+﻿ALTER TABLE Pylons ADD wirerehangingoffsetmiddlelefttraverse double precision NOT NULL DEFAULT(0.0);
+ALTER TABLE Pylons ADD wirerehangingoffsetmiddlerighttraverse double precision NOT NULL DEFAULT(0.0);
+
+INSERT INTO "public"."migsharp" ("timestamp", module, tag) VALUES (2025080801, 'Default', NULL);

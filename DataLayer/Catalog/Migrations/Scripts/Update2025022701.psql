@@ -1,0 +1,17 @@
+﻿ALTER TABLE armatures ADD isolationtype int NOT NULL DEFAULT(0);
+
+ALTER TABLE armatures ADD lengthpathleaks double precision NOT NULL DEFAULT(0);
+
+ALTER TABLE armatures ADD reducedlevelradiointerference boolean NOT NULL DEFAULT FALSE;
+
+ALTER TABLE cablebracings ADD atmosphericpollutionlevel int NOT NULL DEFAULT(1);
+
+ALTER TABLE cablebracings ADD heightabovesealevel double precision NOT NULL DEFAULT(0);
+
+ALTER TABLE cablebracings ADD garlandgroundedattachment boolean NOT NULL DEFAULT TRUE;
+
+ALTER TABLE cablebracings ADD garlandconfigurationtype int NOT NULL DEFAULT(0);
+
+ALTER TABLE cablebracings ADD reducedlevelradiointerference boolean NOT NULL DEFAULT FALSE;
+
+INSERT INTO "public"."migsharp" ("timestamp", module, tag) VALUES (2025022701, 'Default', NULL);

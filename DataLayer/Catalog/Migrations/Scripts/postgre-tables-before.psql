@@ -1,0 +1,567 @@
+BEGIN;
+
+
+CREATE TABLE "public"."allotment_allotments"( 
+	"id" uuid NOT NULL,
+	"fixationid" uuid NOT NULL,
+	"pylonconfigurationid" uuid NOT NULL,
+	"discriminator" int NOT NULL,
+	"sizea" double precision,
+	"sizeb" double precision,
+	"sizec" double precision,
+	"sized" double precision,
+	"sizee" double precision,
+	"sizef" double precision,
+	"segmentangle" int,
+	"triangleangle" int,
+	"branchangle" int,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."allotment_fixations"( 
+	"id" uuid NOT NULL,
+	"typeprojectid" uuid,
+	"name" varchar(255) NOT NULL,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."armaturetypes"( 
+	"id" uuid NOT NULL,
+	"name" varchar(255) NOT NULL,
+	"order" int NOT NULL,
+	"equipmenttype" int NOT NULL,
+	"image" bytea,
+	"canflipped" boolean,
+	"cansetcount" boolean,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."armatures"( 
+	"id" uuid NOT NULL,
+	"armaturetypeid" uuid NOT NULL,
+	"factoryid" uuid,
+	"name" varchar(255) NOT NULL,
+	"code" varchar(255) NOT NULL,
+	"gost" varchar,
+	"weight" double precision NOT NULL,
+	"import" boolean NOT NULL,
+	"productcode" varchar(255),
+	"typeprojectid" uuid,
+	"material" int,
+	"unitofmeasurement" int,
+	"cost" double precision,
+	"sortorder" int,
+	"height" double precision,
+	"width" double precision,
+	"secondsizeheight" double precision,
+	"thirdsizeheight" double precision,
+	"externaltop" boolean,
+	"externalbottom" boolean,
+	"expandplane" boolean,
+	"image" bytea,
+	"frontaldrawing" bytea,
+	"profiledrawing" bytea,
+	"secondsizedrawing" bytea,
+	"thirdsizedrawing" bytea,
+	"version" int NOT NULL,
+	"isolatorplatediameter" double precision NOT NULL);
+
+CREATE TABLE "public"."cablebracingarmatures"( 
+	"id" uuid NOT NULL,
+	"armatureid" uuid NOT NULL,
+	"cablebracingid" uuid NOT NULL,
+	"x" double precision,
+	"y" double precision,
+	"count" int,
+	"isflipped" boolean,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."cablebracings"( 
+	"id" uuid NOT NULL,
+	"code" varchar(255) NOT NULL,
+	"name" varchar(255),
+	"scheme" varchar(255),
+	"goal" int NOT NULL,
+	"voltage" int NOT NULL,
+	"isolatorlength" double precision,
+	"viewcount" int,
+	"orientation" boolean,
+	"expandplane" boolean,
+	"version" int NOT NULL,
+	"bracingtype" int NOT NULL);
+
+CREATE TABLE "public"."clamp_clamps"( 
+	"clamptypeid" uuid NOT NULL,
+	"pylonid" uuid NOT NULL,
+	"wireid" uuid NOT NULL,
+	"code" varchar(255) NOT NULL,
+	"gost" varchar,
+	"id" uuid NOT NULL,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."clamp_types"( 
+	"id" uuid NOT NULL,
+	"typeprojectid" uuid,
+	"name" varchar(255) NOT NULL,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."configuration"( 
+	"id" uuid NOT NULL,
+	"key" varchar(255) NOT NULL,
+	"value" varchar(255) NOT NULL);
+
+CREATE TABLE "public"."constructiongroups"( 
+	"id" uuid NOT NULL,
+	"code" varchar(255) NOT NULL,
+	"order" int NOT NULL,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."couplingconnectionrules"( 
+	"id" uuid NOT NULL,
+	"couplingtype1id" uuid NOT NULL,
+	"couplingtype2id" uuid NOT NULL,
+	"checksize1" boolean,
+	"checksize2" boolean,
+	"crosscheck" boolean,
+	"checksize1direction" boolean,
+	"checksize2direction" boolean,
+	"needtap" boolean,
+	"covertype" int,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."couplingconnections"( 
+	"id" uuid NOT NULL,
+	"inarmatureid" uuid,
+	"outarmatureid" uuid,
+	"incouplingid" uuid NOT NULL,
+	"outcouplingid" uuid NOT NULL,
+	"taparmature" boolean,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."couplingtypes"( 
+	"id" uuid NOT NULL,
+	"name" varchar(100) NOT NULL,
+	"size1name" varchar,
+	"size2name" varchar,
+	"size1shortname" varchar,
+	"size2shortname" varchar,
+	"havesize1" boolean,
+	"havesize2" boolean,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."couplings"( 
+	"id" uuid NOT NULL,
+	"armatureid" uuid NOT NULL,
+	"couplingtypeid" uuid NOT NULL,
+	"connectiontype" int,
+	"weight" numeric(18, 2),
+	"size1" double precision,
+	"size2" double precision,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."equipmentconfigurationclamptypes"( 
+	"equipmentconfigurationid" uuid NOT NULL,
+	"clamptypeid" uuid NOT NULL,
+	"count" int NOT NULL,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."equipmentconfigurations"( 
+	"id" uuid NOT NULL,
+	"equipmentid" uuid NOT NULL,
+	"name" varchar(255) NOT NULL,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."equipmentconfigurationsarmatures"( 
+	"equipmentconfigurationid" uuid NOT NULL,
+	"armatureid" uuid NOT NULL,
+	"count" numeric(19, 5) NOT NULL,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."equipments"( 
+	"id" uuid NOT NULL,
+	"name" varchar(255) NOT NULL,
+	"typeprojectid" uuid,
+	"code" varchar(255) NOT NULL,
+	"gost" varchar(255) NOT NULL,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."factories"( 
+	"id" uuid NOT NULL,
+	"name" varchar(255) NOT NULL,
+	"shortname" varchar(255) NOT NULL,
+	"factorytype" int NOT NULL,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."foundation_categories"( 
+	"id" uuid NOT NULL,
+	"name" varchar(255) NOT NULL,
+	"order" int NOT NULL,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."foundation_concretetypes"( 
+	"id" uuid NOT NULL,
+	"name" varchar(255) NOT NULL,
+	"order" int NOT NULL,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."foundation_configurations"( 
+	"id" uuid NOT NULL,
+	"foundationid" uuid NOT NULL,
+	"subfoundationid" uuid NOT NULL,
+	"count" int NOT NULL,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."foundation_fixation"( 
+	"id" uuid NOT NULL,
+	"name" varchar(255) NOT NULL,
+	"order" int NOT NULL,
+	"version" int NOT NULL,
+	"fixationtype" int NOT NULL);
+
+CREATE TABLE "public"."foundation_foundations"( 
+	"id" uuid NOT NULL,
+	"concretetypeid" uuid NOT NULL,
+	"factoryid" uuid,
+	"categoryid" uuid NOT NULL,
+	"fixationid" uuid NOT NULL,
+	"typeexpandinorderspecification" int NOT NULL,
+	"typeexpandinspecification" int NOT NULL,
+	"montagescheme" varchar(255),
+	"mountingdrawing" varchar(255) NOT NULL,
+	"name" varchar(255) NOT NULL,
+	"code" varchar(255) NOT NULL,
+	"volume" double precision NOT NULL,
+	"weight" double precision NOT NULL,
+	"width" double precision,
+	"length" double precision,
+	"height" double precision,
+	"eccentricity" double precision,
+	"issetindrillingpit" boolean,
+	"rackdeeping" double precision,
+	"banquetteheight" double precision,
+	"banquettetopsize" double precision,
+	"volumesoilforbackfill" double precision,
+	"volumesoilforlandfilling" double precision,
+	"excavationsoilunderrigel" double precision,
+	"deepingrigel" int,
+	"rigellocation" int,
+	"deepingrigelcount" int,
+	"version" int NOT NULL,
+	"propsheight" double precision NOT NULL,
+	"rackwidth" double precision NOT NULL,
+	"fullweight" double precision NOT NULL);
+
+CREATE TABLE "public"."grunts"( 
+	"name" varchar(500) NOT NULL,
+	"code" int,
+	"fullweight" double precision,
+	"specificweight" double precision,
+	"koefporosity" double precision,
+	"defmodulus" double precision,
+	"specificadhesion" double precision,
+	"safetyfactor" double precision,
+	"angle" double precision,
+	"safetyfactorangle" double precision,
+	"naturalwater" double precision,
+	"plasticity" double precision,
+	"isavgplasticity" boolean,
+	"plasticityavg" int,
+	"consistence" double precision,
+	"isavgconsistence" boolean,
+	"consistenceavg" double precision,
+	"id" uuid NOT NULL,
+	"version" int,
+	"pesokgr" int,
+	"swampvalue" double precision,
+	"swamplevel" int,
+	"grunttype" int,
+	"group" int,
+	"consistencefrom" double precision,
+	"consistenceto" double precision,
+	"plasticityfrom" double precision,
+	"plasticityto" double precision);
+
+CREATE TABLE "public"."landtypes"( 
+	"id" uuid NOT NULL,
+	"name" varchar(255) NOT NULL,
+	"order" int NOT NULL,
+	"addtocommonallotment" boolean NOT NULL,
+	"kind" int,
+	"weight" int,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."migsharp"( 
+	"timestamp" bigint NOT NULL,
+	"module" varchar(250) NOT NULL,
+	"tag" varchar(2000));
+
+CREATE TABLE "public"."pylonconfigurationarmatures"( 
+	"pylonconfigurationid" uuid NOT NULL,
+	"armatureid" uuid NOT NULL,
+	"count" numeric(19, 5) NOT NULL,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."pylonconfigurations"( 
+	"id" uuid NOT NULL,
+	"pylonid" uuid NOT NULL,
+	"name" varchar(255) NOT NULL,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."pylonconfigurationsclamptypes"( 
+	"pylonconfigurationid" uuid NOT NULL,
+	"clamptypeid" uuid NOT NULL,
+	"count" int NOT NULL,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."pylonconfigurationsequipmentconfigurations"( 
+	"pylonconfigurationid" uuid NOT NULL,
+	"equipmentconfigurationid" uuid NOT NULL,
+	"count" int NOT NULL,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."pylonsections"( 
+	"id" uuid NOT NULL,
+	"discriminator" varchar(255) NOT NULL,
+	"code" varchar(255) NOT NULL,
+	"widthtop" double precision NOT NULL,
+	"widthbottom" double precision NOT NULL,
+	"heightmarktop" double precision NOT NULL,
+	"heightmarkbottom" double precision NOT NULL,
+	"pylonid" uuid,
+	"windcalculationtype" int,
+	"fillrate" double precision,
+	"count" int,
+	"notuseforwindcalculations" boolean,
+	"notuseforallcalculations" boolean,
+	"orientation" int,
+	"heightlevel" uuid,
+	"shape" int,
+	"traverselength" double precision,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."pylons"( 
+	"id" uuid NOT NULL,
+	"typeprojectid" uuid,
+	"factoryid" uuid,
+	"voltage" int NOT NULL,
+	"type" int NOT NULL,
+	"code" varchar(255) NOT NULL,
+	"sheme" varchar(255) NOT NULL,
+	"basex" double precision NOT NULL,
+	"basey" double precision NOT NULL,
+	"lugbottomlefttraverse" double precision NOT NULL,
+	"lugbottomrighttraverse" double precision NOT NULL,
+	"bottomlefttraverse" double precision NOT NULL,
+	"bottomrighttraverse" double precision NOT NULL,
+	"coefficientofflexibility" double precision NOT NULL,
+	"rackbuttdiameter" double precision NOT NULL,
+	"height" double precision NOT NULL,
+	"heightbottomtraverse" double precision NOT NULL,
+	"heightmiddletraverse" double precision NOT NULL,
+	"heighttoptraverse" double precision NOT NULL,
+	"lugmiddlelefttraverse" double precision NOT NULL,
+	"lugmiddlerighttraverse" double precision NOT NULL,
+	"middlelefttraverse" double precision NOT NULL,
+	"middlerighttraverse" double precision NOT NULL,
+	"angleofbeltlowersection" double precision NOT NULL,
+	"angleofbeltmiddlesection" double precision NOT NULL,
+	"angleofbelttopsection" double precision NOT NULL,
+	"lugtoplefttraverse" double precision NOT NULL,
+	"lugtoprighttraverse" double precision NOT NULL,
+	"toplefttraverse" double precision NOT NULL,
+	"toprighttraverse" double precision NOT NULL,
+	"weightlengthspan" double precision NOT NULL,
+	"windlengthspan" double precision NOT NULL,
+	"armatureweigth" double precision NOT NULL,
+	"concretevolume" double precision NOT NULL,
+	"woodvolume" double precision NOT NULL,
+	"ladderweigth" double precision NOT NULL,
+	"metalweight" double precision NOT NULL,
+	"hasguyropes" boolean NOT NULL,
+	"temporarylandallotment" double precision NOT NULL,
+	"permanentlandallotmentextended" double precision NOT NULL,
+	"permanentlandallotment" double precision NOT NULL,
+	"typesuspension" int NOT NULL,
+	"material" int NOT NULL,
+	"rackcount" int NOT NULL,
+	"angleofguy" double precision,
+	"coefficientofdynamics" double precision,
+	"heightropetraverse" double precision,
+	"lengthropelefttraverse" double precision,
+	"lengthroperighttraverse" double precision,
+	"lugropelefttraverse" double precision,
+	"lugroperighttraverse" double precision,
+	"penetration" double precision,
+	"racktopdiameter" double precision,
+	"weightmetiz" double precision,
+	"weightwithzinc" double precision,
+	"weightcasting" double precision,
+	"weightforging" double precision,
+	"racknumberoffaces" int,
+	"coderack" varchar(255),
+	"fullname" varchar(255),
+	"iscentrifuged" boolean,
+	"isgalvanized" boolean,
+	"slopetangentfacade" double precision,
+	"slopetangentside" double precision,
+	"version" int NOT NULL,
+	"widthendtoplefttraverse" double precision NOT NULL,
+	"widthbasetoplefttraverse" double precision NOT NULL,
+	"widthendtoprighttraverse" double precision NOT NULL,
+	"widthbasetoprighttraverse" double precision NOT NULL,
+	"widthendmiddlelefttraverse" double precision NOT NULL,
+	"widthbasemiddlelefttraverse" double precision NOT NULL,
+	"widthendmiddlerighttraverse" double precision NOT NULL,
+	"widthbasemiddlerighttraverse" double precision NOT NULL,
+	"widthendbottomlefttraverse" double precision NOT NULL,
+	"widthbasebottomlefttraverse" double precision NOT NULL,
+	"widthendbottomrighttraverse" double precision NOT NULL,
+	"widthbasebottomrighttraverse" double precision NOT NULL,
+	"numbergarlandstoplefttraverse" int,
+	"numbergarlandstoprighttraverse" int,
+	"numbergarlandsmiddlelefttraverse" int,
+	"numbergarlandsmiddlerighttraverse" int,
+	"numbergarlandsbottomlefttraverse" int,
+	"numbergarlandsbottomrighttraverse" int,
+	"distancegarlandstoplefttraverse" double precision,
+	"distancegarlandstoprighttraverse" double precision,
+	"distancegarlandsmiddlelefttraverse" double precision,
+	"distancegarlandsmiddlerighttraverse" double precision,
+	"distancegarlandsbottomlefttraverse" double precision,
+	"distancegarlandsbottomrighttraverse" double precision);
+
+CREATE TABLE "public"."sectioncornersets"( 
+	"id" uuid NOT NULL,
+	"iscincture" boolean NOT NULL,
+	"cornerlength" double precision NOT NULL,
+	"count" int NOT NULL,
+	"cornerid" uuid,
+	"pylonmetalsectiondescriptionid" uuid,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."sectioncorners"( 
+	"id" uuid NOT NULL,
+	"code" varchar(255) NOT NULL,
+	"number" double precision NOT NULL,
+	"rackwidth" double precision NOT NULL,
+	"rackthickness" double precision NOT NULL,
+	"innerradius" double precision NOT NULL,
+	"outerradius" double precision NOT NULL,
+	"crosssectionarea" double precision NOT NULL,
+	"weight" double precision NOT NULL,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."slashing_forestyield"( 
+	"size" int NOT NULL,
+	"depth" int NOT NULL,
+	"order" int NOT NULL,
+	"trunkdiameter" varchar(255) NOT NULL,
+	"stumpdiameter" varchar(255) NOT NULL,
+	"counttrees" int NOT NULL,
+	"businesswood" int NOT NULL,
+	"wood" int NOT NULL,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."slashing_woodtypes"( 
+	"id" uuid NOT NULL,
+	"name" varchar(255) NOT NULL,
+	"radius" double precision NOT NULL,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."slashing_zones"( 
+	"id" uuid NOT NULL,
+	"voltage" int NOT NULL,
+	"widthzone" double precision NOT NULL,
+	"reserverange" double precision NOT NULL,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."soils"( 
+	"id" uuid NOT NULL,
+	"name" varchar(255) NOT NULL,
+	"consistence" varchar(255),
+	"constructiongroupid" uuid NOT NULL,
+	"slope1_5" double precision NOT NULL,
+	"slope3" double precision NOT NULL,
+	"slope5" double precision NOT NULL,
+	"wateredslope1_5" double precision NOT NULL,
+	"wateredslope3" double precision NOT NULL,
+	"wateredslope5" double precision NOT NULL,
+	"isstick" boolean NOT NULL,
+	"shouldbeloosen" boolean NOT NULL,
+	"issand" boolean NOT NULL,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."typeprojects"( 
+	"id" uuid NOT NULL,
+	"name" varchar(255) NOT NULL,
+	"shortname" varchar(255) NOT NULL,
+	"voltage" int NOT NULL,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."volumeterms"( 
+	"id" uuid NOT NULL,
+	"name" varchar(100) NOT NULL,
+	"landtypeid" uuid,
+	"version" int NOT NULL);
+
+CREATE TABLE "public"."wires"( 
+	"id" uuid NOT NULL,
+	"factoryid" uuid,
+	"type" int,
+	"name" varchar(255),
+	"code" varchar(255),
+	"gost" varchar(255),
+	"weight" double precision,
+	"diameter" double precision,
+	"tensionmaximumload" double precision,
+	"crosssectionarea" double precision,
+	"crosssectionareaal" double precision,
+	"tensionmidoperatingload" double precision,
+	"temperaturecompensation" double precision,
+	"alfa" double precision,
+	"modd" double precision,
+	"mode" double precision,
+	"modf" double precision,
+	"import" boolean,
+	"productcode" varchar(255),
+	"a1" double precision,
+	"a2" double precision,
+	"a3" double precision,
+	"constructionlength" double precision,
+	"crosssectionareasteel" double precision,
+	"exp1" double precision,
+	"max1" double precision,
+	"clampcode" varchar(255),
+	"resistance" double precision,
+	"reactance" double precision,
+	"resistancephase0" double precision,
+	"version" int NOT NULL,
+	"discriminator" varchar(255) NOT NULL,
+	"conductortype" int,
+	"totalrts" double precision,
+	"totalnominalweight" double precision,
+	"finalmoecore" double precision,
+	"finalmoealuminum" double precision,
+	"thermalexpansional" double precision,
+	"thermalexpansioncore" double precision,
+	"reftemp" double precision,
+	"maxoptemp" double precision,
+	"wirefilereftemp" double precision,
+	"a0" double precision,
+	"a4" double precision,
+	"b0" double precision,
+	"b1" double precision,
+	"b2" double precision,
+	"b3" double precision,
+	"b4" double precision,
+	"c0" double precision,
+	"c1" double precision,
+	"c2" double precision,
+	"c3" double precision,
+	"c4" double precision,
+	"d0" double precision,
+	"d1" double precision,
+	"d2" double precision,
+	"d3" double precision,
+	"d4" double precision,
+	"alpart" double precision,
+	"corepart" double precision);
+
+COMMIT;

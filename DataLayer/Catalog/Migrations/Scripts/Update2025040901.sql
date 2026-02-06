@@ -1,0 +1,23 @@
+﻿ALTER TABLE Pylons ADD StrutOneHeight float NOT NULL DEFAULT(0.0)
+GO
+
+ALTER TABLE Pylons ADD StrutOneWidth float NOT NULL DEFAULT(0.0)
+GO
+
+ALTER TABLE Pylons ADD StrutOneAngle float NOT NULL DEFAULT(0.0)
+GO
+
+ALTER TABLE Pylons ADD BraceOneHeight float NOT NULL DEFAULT(0.0)
+GO
+
+ALTER TABLE Pylons ADD StrutTwoHeight float NOT NULL DEFAULT(0.0)
+GO
+
+ALTER TABLE Pylons ADD StrutTwoWidth float NOT NULL DEFAULT(0.0)
+GO
+
+ALTER TABLE Pylons ADD StrutTwoAngle float NOT NULL DEFAULT(0.0)
+GO
+
+ALTER TABLE Pylons ADD BraceTwoHeight float NOT NULL DEFAULT(0.0)
+GO

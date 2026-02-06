@@ -1,0 +1,10 @@
+﻿ALTER TABLE Pylons ADD strutoneheight double precision NOT NULL DEFAULT(0.0);
+ALTER TABLE Pylons ADD strutonewidth double precision NOT NULL DEFAULT(0.0);
+ALTER TABLE Pylons ADD strutoneangle double precision NOT NULL DEFAULT(0.0);
+ALTER TABLE Pylons ADD braceoneheight double precision NOT NULL DEFAULT(0.0);
+ALTER TABLE Pylons ADD struttwoheight double precision NOT NULL DEFAULT(0.0);
+ALTER TABLE Pylons ADD struttwowidth double precision NOT NULL DEFAULT(0.0);
+ALTER TABLE Pylons ADD struttwoangle double precision NOT NULL DEFAULT(0.0);
+ALTER TABLE Pylons ADD bracetwoheight double precision NOT NULL DEFAULT(0.0);
+
+INSERT INTO "public"."migsharp" ("timestamp", module, tag) VALUES (2025040901, 'Default', NULL);

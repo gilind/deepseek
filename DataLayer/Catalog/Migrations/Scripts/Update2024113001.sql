@@ -1,0 +1,32 @@
+﻿ALTER TABLE Wires ADD CalculationType int NOT NULL DEFAULT(0)
+GO
+
+ALTER TABLE Wires ADD TensionMinTemperatureLoad float NOT NULL DEFAULT(0.0)
+GO
+
+ALTER TABLE Wires ADD TensionMondageLoad float NOT NULL DEFAULT(0.0)
+GO
+
+ALTER TABLE Wires ADD FinalModEOuter float NOT NULL DEFAULT(0.0)
+GO
+
+ALTER TABLE Wires ADD FinalModECore float NOT NULL DEFAULT(0.0)
+GO
+
+ALTER TABLE Wires ADD ModEMontage float NOT NULL DEFAULT(0.0)
+GO
+
+ALTER TABLE Wires ADD ModEAfterCreep float NOT NULL DEFAULT(0.0)
+GO
+
+ALTER TABLE Wires ADD KtlrOuter float NOT NULL DEFAULT(0.0)
+GO
+
+ALTER TABLE Wires ADD KtlrCore float NOT NULL DEFAULT(0.0)
+GO
+
+ALTER TABLE Wires ADD TrialTemp float NOT NULL DEFAULT(0.0)
+GO
+
+ALTER TABLE Wires ADD KneePointTemp float NOT NULL DEFAULT(70.0)
+GO
